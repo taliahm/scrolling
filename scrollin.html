@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Breathe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins';
+            margin: 0;
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            padding: 40px;
+            transition: all 0.5s ease-in;
+            min-height: 50vh;
+        }
+
+        h1 {
+            font-size: 4vw * 10px;
+            margin: 20px;
+        }
+
+        h2 {
+            font-size: 6.8vw;
+            letter-spacing: 1.4px;
+        }
+
+        .one {
+            background: #35524A;
+            color: white;
+        }
+        .two {
+            background: #627C85;
+        }
+        .three {
+            background: #779CAB;
+        }
+        .four {
+            background: #A2E8DD;
+        }
+        .five {
+            background: #32DE8A;
+        }
+        .six {
+            background: #FFFF82;
+        }
+        .seven {
+            background: #B5D99C;
+        }
+        .eight {
+            background: #0F0326;
+            color: white;
+        }
+        .nine {
+            background: #E65F5C;
+        }
+        .ten {
+            background: #23001E;
+            color: white;
+        }
+    </style>
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+    <header>
+        <h1>Need something calming to scroll through?</h1>
+    </header>
+    <section id="one">
+        <h2>You are wonderful!</h2>
+    </section>
+    <section id="two">
+        <h2>Have you had water today?</h2>
+    </section>
+    <section id="three">
+        <h2>Have you eaten in the past little bit?</h2>
+    </section>
+    <section id="four">
+        <h2>Time to get outside!</h2>
+    </section>
+    <section id="five">
+        <h2>And don't forget to breathe.</h2>
+    </section>
+    <section id="six">
+        <h2>You are kind.</h2>
+    </section>
+    <section id="seven">
+        <h2>Let's try some simple counting.</h2>
+    </section>
+    <section id="eight">
+        <h2>Compliment yourself, you are super great!</h2>
+    </section>
+    <section id="nine">
+        <h2>Send a pal a message, even just an emoji</h2>
+    </section>
+    <section id="ten">
+        <h2>Play a song that makes you happy!</h2>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            ScrollReveal().reveal('h2', { delay: 500 });
+            const elements = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+            const els = [];
+            elements.forEach((el) => {
+                const doc = document.getElementById(el);
+                els.push(doc)
+            })
+            console.log(els)
+            const heights = [];
+            els.forEach((el) => {
+                console.log(el.scrollHeight)
+                heights.push({bounding: el.getBoundingClientRect(), el })
+            })
+            console.log(heights)
+            // const el = document.getElementById('changeMe');
+            // const place = el.scrollHeight;
+            document.addEventListener('scroll', (e) => {
+                const pagePlace = document.documentElement.scrollTop;
+                heights.forEach((elObj) => {
+                    if (pagePlace >= elObj.bounding.top - 500) {
+                        console.log('hello?')
+                        elObj.el.classList.add(elObj.el.id)
+                    } else {
+                        elObj.el.classList.remove(elObj.el.id)
+                    }
+                })
+            })
+    })
+    </script>
+</body>
+</html>
